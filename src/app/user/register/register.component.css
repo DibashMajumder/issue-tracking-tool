@@ -1,14 +1,7 @@
-body {
-  /* color: #fff; */
-  background-image: url("../../../assets/login.jpg");
-  /* background: #63738a; */
-  font-family: 'Roboto', sans-serif;
-  min-height: 100%;
-}
-
 .form-parent {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
   background-image: url("../../../assets/login.jpg");
   background-repeat: repeat;
 }
