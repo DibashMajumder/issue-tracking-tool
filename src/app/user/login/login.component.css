@@ -66,6 +66,18 @@
       min-width: 15px;
     }
 
-    .input-group-addon .fa {
+    .input-group-prepend .fa {
       font-size: 18px;
+    }
+
+    .register {
+        font-weight: bold;
+        color: #2ccf0b;
+        font-size: 1em;
+    }
+
+    .create-account {
+        font-weight: bold;
+        color: #000000;
+        font-size: 1em;
     }
