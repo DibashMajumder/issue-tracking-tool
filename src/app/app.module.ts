@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { LoginComponent } from './user/login/login.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginComponent } from './user/login/login.component';
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: '*', component: LoginComponent },
       { path: '**', component: LoginComponent }
-    ])
+    ]),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
