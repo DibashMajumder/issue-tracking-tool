@@ -118,3 +118,8 @@
 .text-center .login {
     color: #30ec0b;
 }
+
+.alert-box {
+  margin-left: 32px !important;
+  margin-top: 5px;
+}

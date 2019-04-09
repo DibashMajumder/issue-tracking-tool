@@ -1,47 +1,72 @@
 <div class="form-parent">
   <div class="signup-form">
-    <form>
+    <form #f="ngForm" (ngSubmit) = "signupFunction()">
       <h2>Register</h2>
       <p class="hint-text">Create your account. It's free and only takes a minute.</p>
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-prepend mr-3 mt-2"><i class="fas fa-user"></i></span>
-          <input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
+          <input type="text" class="form-control" name="first_name" placeholder="First Name" required="required" [(ngModel)]="firstName" #firstNameInput= "ngModel">
+        </div>
+        <div class="alert alert-danger alert-box" *ngIf="firstNameInput.touched && !firstNameInput.valid">
+          <div *ngIf="firstNameInput.errors.required">First Name Required</div>
+        </div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-prepend mr-3 mt-2"><i class="fas fa-user"></i></span>
-          <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required">
+          <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"
+            [(ngModel)]="lastName" #lastNameInput = "ngModel">
+        </div>
+        <div class="alert alert-danger alert-box" *ngIf="lastNameInput.touched && !lastNameInput.valid">
+          <div *ngIf="lastNameInput.errors.required">Last Name Required</div>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-prepend mr-3 mt-2"><i class="fas fa-paper-plane"></i></span>
-          <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+          <input type="email" class="form-control" name="email" placeholder="Email" required="required"
+            [(ngModel)]="email" #emailInput="ngModel" pattern="^[a-zA-Z0–9_.+\-]+@[a-zA-Z0–9\-]+\.[a-zA-Z0–9\-.]+$">
+        </div>
+        <div class="alert alert-danger alert-box" *ngIf="emailInput.touched && !emailInput.valid">
+          <div *ngIf="emailInput.errors.required">Email Required</div>
+          <div *ngIf="emailInput.errors.pattern">Email pattern is wrong</div>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-prepend mr-3 mt-2"><i class="fas fa-key"></i></span>
-          <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+          <input type="password" class="form-control" name="password" placeholder="Password" required="required"
+            [(ngModel)]="password" #passwordInput = "ngModel">
+        </div>
+        <div class="alert alert-danger alert-box" *ngIf="passwordInput.touched && !passwordInput.valid">
+          <div *ngIf="passwordInput.errors.required">Password Required</div>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-prepend mr-3 mt-2"><i class="fas fa-key"></i></span>
           <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
-            required="required">
+            required="required" pattern="{{ passwordInput.value }}" [(ngModel)]="confirmPassword" #confirmPasswordInput = "ngModel">
+        </div>
+        <div class="alert alert-danger alert-box" *ngIf="confirmPasswordInput.touched && !confirmPasswordInput.valid">
+          <div *ngIf="confirmPasswordInput.errors.required">Re-enter your passowrd</div>
+          <div *ngIf= "confirmPasswordInput.value!==passwordInput.value">Password does not match</div>
         </div>
       </div>
       <div class="form-group">
-        <label class="checkbox-inline ml-3 mt-2"><input type="checkbox" required="required"> I accept the <a
-            href="#">Terms of
+        <label class="checkbox-inline ml-3 mt-2">
+        <input type="checkbox" required="required" name="agreement" [(ngModel)]="agreement" #agreementInput="ngModel"> I accept the <a
+          href="#">Terms of
             Use</a> &amp; <a href="#">Privacy Policy</a></label>
+         <div class="alert alert-danger alert-box" *ngIf="agreementInput.touched && !agreementInput.valid" >
+           <div *ngIf="agreementInput.errors">Check terms and conditions</div>
+         </div>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        <button class="btn btn-success btn-lg btn-block" [disabled]="!f.valid">Register Now</button>
       </div>
     </form>
-    <div class="text-center">Already have an account? <a class="login" (click)= "goToLogin()">Sign in</a></div>
+    <div class="text-center">Already have an account? <a class="login" routerLink= "['/login']" routerLinkActive = "active">Sign in</a></div>
   </div>
 </div>

@@ -23,9 +23,11 @@
     }
 
     .login-form .hint-text {
-      color: #777;
+      color: #00000069;
       padding-bottom: 15px;
       text-align: center;
+      font-weight: bold;
+      font-size: 1em;
     }
 
     .form-control,
@@ -76,8 +78,3 @@
         font-size: 1em;
     }
 
-    .create-account {
-        font-weight: bold;
-        color: #000000;
-        font-size: 1em;
-    }

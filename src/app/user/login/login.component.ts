@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  constructor(public router: Router, private toastr: ToastrService) {}
 
-  constructor(public router: Router) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  // public goToRegister: any = () => {
+
+  //   this.router.navigate(['/register']);
+
+  // }
+
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
-
-  public goToRegister: any = () => {
-
-    this.router.navigate(['/register']);
-
-  }
-
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -8,14 +10,33 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  public firstName: any;
+  public lastName: any;
+  public email: any;
+  public password: any;
+
+
+  constructor(public router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
-    public goToLogin: any = () => {
+  //   public goToLogin: any = () => {
 
-    this.router.navigate(['/login']);
+  //   this.router.navigate(['/login']);
 
-  }
+  // }
+
+  public signupFunction: any = () => {
+
+      const data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password
+
+      };
+      console.log(data);
+
+    }
 }
